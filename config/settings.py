@@ -151,5 +151,3 @@ import os
 MEDIA_URL = '/media/'  # Custom - access to files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Custom - Dir of file saving
 
-
-#for django bootstrap5
