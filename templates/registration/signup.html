@@ -9,13 +9,22 @@
 
 {% block content %}
 
-    <form method="POST" enctype="multipart/form-data" action="">
-        {% csrf_token %}
-        <div class="row p-4">
-            <div class="col-md-6 col-xl-4 d-flex flex-column">
-                {% bootstrap_form form %}
-                <button class="btn btn-sm btn-success px-4 mx-auto" type="submit">Sign Up</button>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <p>Signup</p>
         </div>
-    </form>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data" action="">
+                {% csrf_token %}
+                <div class="row p-4">
+                    <div class="col-md-6 col-xl-4 d-flex flex-column">
+                        {% bootstrap_form form %}
+                        <button class="btn btn-sm btn-success px-4 mx-auto" type="submit">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    
 {% endblock content %}
