@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+{% load django_bootstrap5 %}
+
+
+{% block page_title %}
+    {{ book.title }}
+{% endblock page_title %}
+
+
+{% block content %}
+    <div class="col-12 my-2">
+        <div class="card h-100 p-2">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {% if request.resolver_match.url_name == 'book_update' %} Edit Book Details{% else %} Add
+                        Book {% endif %}
+
+                </h5>
+                <div class="row">
+                    {% if request.resolver_match.url_name == 'book_update' %}
+                        <div class="col mh-30 d-flex my-3">
+                            <img src="{{ book.cover_image.url }}"
+                                 class="img-fluid h-auto w-auto mx-auto object-fit-cover" alt="...">
+                        </div>
+                    {% endif %}
+                    <form method="POST" enctype="multipart/form-data" action="">
+                        {% csrf_token %}
+
+                        {% bootstrap_form form %}
+
+
+                        <div class="col-auto p-2 d-flex">
+                            <button type="submit" class="btn btn-primary mx-auto px-4">
+                                {% if request.resolver_match.url_name == 'book_update' %} update details{% else %} Add Book {% endif %}
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock content %}

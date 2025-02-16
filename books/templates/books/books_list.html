@@ -1,0 +1,74 @@
+{% extends '_base.html' %}
+
+{% block page_title %}
+    Books List
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% for book in books %}
+        <div class="col-10 col-md-6 col-xl-4 g-3 my-4">
+            <div class="card mb-3 shadow-sm overflow-hidden h-100 rounded-5">
+
+                <div class="card-img-top mh-30 d-flex hero-section">
+                    <img src="{{ book.cover_image.url }}"
+                         class="img-fluid rounded-3 h-100 w-auto mx-auto object-fit-cover"
+                         alt="...">
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text truncate">{{ book.text }}</p>
+
+
+                </div>
+                <div class="card-footer d-flex justify-content-between gap-2">
+                    <a href="{% url 'book_details' book.id %}"
+                       class="btn btn-sm btn-outline-primary my-auto">Details</a>
+                    <a href="{% url 'book_update' book.id %}"
+                       class="btn btn-sm btn-outline-secondary my-auto px-3">Edit</a>
+                    <a type="button" class="btn btn-sm btn-outline-danger my-auto"
+                       data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ book.id }}">
+                        Delete
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade " id="deleteConfirm{{ book.id }}" tabindex="-1"
+                         aria-labelledby="deleteConfirm{{ book.id }}Label"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="deleteConfirm{{ book.id }}Label">Delete
+                                        Confirmation</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure that you want to Delete this book?</p>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                    <form method="post" action="{% url 'book_delete' pk=book.id %}">
+                                        {% csrf_token %}
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+{% endblock content %}

@@ -1,3 +1,76 @@
-venv/
-.idea/
+# General Python ignores
+*.pyc
+*.pyo
+*.pyd
 __pycache__/
+*.swp
+*.swo
+
+# Virtual environment
+.venv/
+venv/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+*.DS_Store
+Thumbs.db
+
+# Django-specific ignores
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Migrations (optional, can be useful to track them)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Security & environment files
+.env
+*.pem
+*.crt
+*.key
+config/settings/local.py
+
+# Compiled files
+*.out
+*.o
+*.so
+
+# Docker
+docker-compose.override.yml
+__MACOSX/
+
+# Node.js (if using npm/yarn for frontend assets)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Coverage & Testing
+.coverage
+htmlcov/
+nosetests.xml
+*.cover
+*.pycoverage
+*.hypothesis/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Celery
+celerybeat-schedule
+
+# Deployment
+*.envrc
+*.cfg
+*.pid
