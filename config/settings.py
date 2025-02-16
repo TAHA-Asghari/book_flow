@@ -134,7 +134,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+#
+#
+#
 #added by me
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -142,3 +144,12 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#for uploading images
+import os
+
+MEDIA_URL = '/media/'  # Custom - access to files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Custom - Dir of file saving
+
+
+
