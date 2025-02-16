@@ -17,7 +17,7 @@ class Book(models.Model):
     ])
     publisher = models.CharField(max_length=100)
     publish_date = models.DateField(
-        validators=[MaxValueValidator(limit_value=now, message="Publish date cannot be in the future.")])
+        validators=[MaxValueValidator(limit_value=now().date(), message="Publish date cannot be in the future.")])
     genre = models.CharField(max_length=100)
     pages_number = models.PositiveIntegerField(validators=[MinValueValidator(1, "Page number must be at least 1.")])
     price = models.DecimalField(max_digits=5, decimal_places=2,validators=[MinValueValidator(0, "Price must be a positive number.")])
