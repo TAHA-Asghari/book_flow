@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
+from django.urls import reverse
 from django.utils.timezone import now
 
 
@@ -24,3 +25,6 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('book_details', args=[self.id] )

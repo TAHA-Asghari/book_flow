@@ -20,9 +20,13 @@
 
 
             <div class="card-footer d-flex gap-2">
-                <a href="{% url 'book_update' book.id %}" class="btn btn-sm btn-outline-secondary rounded-4 mt-auto px-3">Edit</a>
+                <a href="{% url 'book_update' book.id %}"
+                   class="btn btn-sm btn-outline-secondary rounded-4 mt-auto px-3"><i
+                        class="bi bi-pencil"></i>
+                    Edit</a>
                 <a type="button" class="btn btn-sm btn-outline-danger rounded-4 my-auto"
                    data-bs-toggle="modal" data-bs-target="#deleteConfirm">
+                    <i class="bi bi-trash"></i>
                     Delete
                 </a>
                 <!-- Modal -->
@@ -41,10 +45,10 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                 </button>
-                                {{ book.id }}
                                 <form method="POST" action="{% url 'book_delete' book.id %}">
                                     {% csrf_token %}
-                                    <input type="submit" class="btn btn-danger" value="DELETE">
+                                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete
+                                    </button>
                                 </form>
                             </div>
                         </div>

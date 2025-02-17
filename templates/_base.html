@@ -44,7 +44,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-xl-8 my-1">
             <nav class="navbar navbar-expand-md bg-light w-100 rounded-4 border-2 border-scondary shadow sticky-top p-1 px-3">
-                <a class="navbar-brand" href="#">Book Store</a>
+                <a class="navbar-brand" href="#"><i class="bi bi-book"></i> Book Store</a>
                 {% if user.is_authenticated %}
                     <div class="nav-item dropdown list-unstyled ms-auto">
                         <a class="navbar-brand" href="#" role="button" data-bs-toggle="dropdown"
@@ -57,7 +57,7 @@
                             <li>
                                 <form action="{% url 'logout' %}" method="post">
                                     {% csrf_token %}
-                                    <button type="submit" class="dropdown-item" href="">Log out</button>
+                                    <button type="submit" class="dropdown-item">Log out</button>
                                 </form>
 
                             </li>
