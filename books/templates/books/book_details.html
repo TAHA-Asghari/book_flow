@@ -7,7 +7,7 @@
 
 {% block content %}
     <div class="col-11 my-2">
-        <div class="card h-100">
+        <div class="card shadow border-1 border-white overflow-hidden h-100 rounded-4 h-100">
             <div class="card-img-top mh-30 d-flex">
                 <img src="{{ book.cover_image.url }}" class="img-fluid h-100 w-auto mx-auto object-fit-cover" alt="...">
             </div>
@@ -20,8 +20,8 @@
 
 
             <div class="card-footer d-flex gap-2">
-                <a href="{% url 'book_update' book.id %}" class="btn btn-sm btn-outline-secondary mt-auto px-3">Edit</a>
-                <a type="button" class="btn btn-sm btn-outline-danger my-auto"
+                <a href="{% url 'book_update' book.id %}" class="btn btn-sm btn-outline-secondary rounded-4 mt-auto px-3">Edit</a>
+                <a type="button" class="btn btn-sm btn-outline-danger rounded-4 my-auto"
                    data-bs-toggle="modal" data-bs-target="#deleteConfirm">
                     Delete
                 </a>

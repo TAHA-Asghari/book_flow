@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% load static %}
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block page_title %}{% endblock page_title %}</title>
@@ -33,76 +33,75 @@
         {#    background-image: url("../media/covers/70919104245.png");#}
         {#    clip-path: ellipse(100% 80% at 50% 10%);#}
         {#    box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.4); /* Soft shadow */#}
+        =
         {#    -webkit-box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.4);#}
         {#    -moz-box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.4);#}
 
     </style>
 </head>
 <body>
-<nav class="navbar bg-light navbar-expand-md sticky-top">
-    <div class="container-md">
-        <a class="navbar-brand" href="#">Book Store</a>
-        {% if user.is_authenticated %}
-            <div class="nav-item dropdown list-unstyled ms-auto">
-                <a class="navbar-brand" href="#" role="button" data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                    {{ user.get_username }}
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">profile</a></li>
-                    <li>
-                        <form action="{% url 'logout' %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit" class="dropdown-item" href="">Log out</button>
-                        </form>
+<div class="container-fluid p-1">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-xl-8 my-1">
+            <nav class="navbar navbar-expand-md bg-light w-100 rounded-4 border-2 border-scondary shadow sticky-top p-1 px-3">
+                <a class="navbar-brand" href="#">Book Store</a>
+                {% if user.is_authenticated %}
+                    <div class="nav-item dropdown list-unstyled ms-auto">
+                        <a class="navbar-brand" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                            {{ user.get_username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">profile</a></li>
+                            <li>
+                                <form action="{% url 'logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item" href="">Log out</button>
+                                </form>
 
-                    </li>
-                </ul>
-            </div>
-        {% else %}
-            <div class="nav-item dropdown  list-unstyled ms-auto">
-                <a class="navbar-brand " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                        <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                    <li>
-                        <a class="dropdown-item" href="{% url 'signup' %}">SignUp</a>
-                    </li>
-                </ul>
-            </div>
-        {% endif %}
-        <button class="navbar-toggler border-0 shadow-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="navbar-nav">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
-                       href="{% url 'book_list' %}">Books list</a>
-                    <a class="nav-link {% if request.resolver_match.url_name == 'new_post' %}active{% endif %}"
-                       href="{% url 'book_add' %}">Add New Book</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <div class="nav-item dropdown  list-unstyled ms-auto">
+                        <a class="navbar-brand " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'signup' %}">SignUp</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+                <button class="navbar-toggler border-0 shadow-sm" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar"
+                        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar"
+                     aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Book Store</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="navbar-nav mx-md-auto">
+                            <a class="nav-link text-dark {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
+                               href="{% url 'book_list' %}">Books list</a>
+                            <a class="nav-link text-dark {% if request.resolver_match.url_name == 'new_post' %}active{% endif %}"
+                               href="{% url 'book_add' %}">Add New Book</a>
+
+                        </div>
+                    </div>
 
                 </div>
-            </div>
-
-        </div>
 
 
-    </div>
-</nav>
-
-<div class="container-fluid bg-secondary">
-    <div class="row py-3">
-        <div class="col-md-8 col-md-10 mx-auto">
-            <h3 class="my-4 mt-3 text-white">Welcome to our book Store</h3>
+            </nav>
         </div>
     </div>
 </div>

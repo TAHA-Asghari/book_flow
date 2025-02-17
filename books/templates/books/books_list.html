@@ -10,7 +10,7 @@
 
     {% for book in books %}
         <div class="col-10 col-md-6 col-xl-4 g-3 my-4">
-            <div class="card mb-3 shadow-sm overflow-hidden h-100 rounded-5">
+            <div class="card mb-3 shadow border-1 border-white overflow-hidden h-100 rounded-4">
 
                 <div class="card-img-top mh-30 d-flex hero-section">
                     <img src="{{ book.cover_image.url }}"
@@ -24,12 +24,12 @@
 
 
                 </div>
-                <div class="card-footer d-flex justify-content-between gap-2">
+                <div class="card-footer d-flex justify-content-between gap-2 bg-transparent">
                     <a href="{% url 'book_details' book.id %}"
-                       class="btn btn-sm btn-outline-primary my-auto">Details</a>
+                       class="btn btn-sm btn-outline-primary my-auto rounded-4">Details</a>
                     <a href="{% url 'book_update' book.id %}"
-                       class="btn btn-sm btn-outline-secondary my-auto px-3">Edit</a>
-                    <a type="button" class="btn btn-sm btn-outline-danger my-auto"
+                       class="btn btn-sm btn-outline-secondary my-auto rounded-4 px-3">Edit</a>
+                    <a type="button" class="btn btn-sm btn-outline-danger rounded-4 my-auto"
                        data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ book.id }}">
                         Delete
                     </a>
