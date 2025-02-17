@@ -126,6 +126,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+import os
 
 STATIC_URL = 'static/'
 
@@ -146,8 +147,10 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #for uploading images
-import os
 
 MEDIA_URL = '/media/'  # Custom - access to files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Custom - Dir of file saving
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]

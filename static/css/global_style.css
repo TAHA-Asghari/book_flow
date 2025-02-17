@@ -1,0 +1,6 @@
+body{
+    background-color: gray!important;
+    background-image: url("../pattern.svg");
+    background-attachment: fixed;
+    background-size: cover;;
+}
