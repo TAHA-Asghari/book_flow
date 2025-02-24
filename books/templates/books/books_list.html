@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <a href="{{ book.get_absolute_url }}" class="text-decoration-none">
                         <h5 class="card-title "><i class="bi bi-journals"></i>
-                            {{ book.title }}
+                            {{ book.title | capfirst}}
                         </h5>
                     </a>
                     <p class="card-text truncate">{{ book.text }}</p>
