@@ -146,11 +146,11 @@ LOGOUT_REDIRECT_URL = 'home'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#for uploading images
-
+#media Files
 MEDIA_URL = '/media/'  # Custom - access to files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Custom - Dir of file saving
 
+#Static files
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

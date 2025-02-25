@@ -4,3 +4,17 @@ body{
     background-attachment: fixed;
     background-size: cover;;
 }
+
+.mh-30 {
+    max-height: 20vh;
+}
+
+.truncate {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.fs-10 {
+    font-size: 0.8rem !important
+}

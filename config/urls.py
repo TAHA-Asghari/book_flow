@@ -26,5 +26,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('books/', include('books.urls')),
 
-  ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # this id for containing the urls have added for image saving
+  ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # Just for Development
 

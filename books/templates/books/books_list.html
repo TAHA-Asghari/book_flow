@@ -8,71 +8,73 @@
 
 {% block content %}
 
-    {% for book in books %}
+    {% for book in page_obj %}
         <div class="col-10 col-md-6 col-xl-4 g-3 my-4">
             <div class="card mb-3 shadow border-1 border-white overflow-hidden h-100 rounded-4">
+                <div class="row d-flex h-100">
+                    <div class="col-md-4 mh-30 d-flex hero-section p-2">
+                        <img src="{{ book.cover_image.url }}"
+                             class="img-fluid rounded-3 h-100 w-auto mx-auto object-fit-cover"
+                             alt="...">
+                    </div>
 
-                <div class="card-img-top mh-30 d-flex hero-section">
-                    <img src="{{ book.cover_image.url }}"
-                         class="img-fluid rounded-3 h-100 w-auto mx-auto object-fit-cover"
-                         alt="...">
-                </div>
-
-                <div class="card-body">
-                    <a href="{{ book.get_absolute_url }}" class="text-decoration-none">
-                        <h5 class="card-title "><i class="bi bi-journals"></i>
-                            {{ book.title | capfirst}}
-                        </h5>
-                    </a>
-                    <p class="card-text truncate">{{ book.text }}</p>
+                    <div class="card-body col-md-8">
+                        <a href="{{ book.get_absolute_url }}" class="text-decoration-none">
+                            <h5 class="card-title "><i class="bi bi-journals"></i>
+                                {{ book.title | capfirst }}
+                            </h5>
+                        </a>
+                        <p class="card-text truncate">{{ book.text }}</p>
 
 
-                </div>
-                <div class="card-footer d-flex justify-content-center gap-2 bg-transparent">
-                    <a href="{{ book.get_absolute_url }}"
-                       class="btn btn-sm btn-outline-primary my-auto rounded-4">
-                        <i class="bi bi-body-text"></i> Details
-                    </a>
-                    <a href="{% url 'book_update' book.id %}"
-                       class="btn btn-sm btn-outline-secondary my-auto rounded-4 px-3">
-                        <i class="bi bi-pencil"></i> Edit
-                    </a>
-                    <a type="button" class="btn btn-sm btn-outline-danger rounded-4 my-auto"
-                       data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ book.id }}">
-                        <i class="bi bi-trash"></i>
-                        Delete
-                    </a>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center gap-2 mt-auto bg-transparent">
+                        <a href="{{ book.get_absolute_url }}"
+                           class="btn btn-sm btn-outline-primary my-auto rounded-4">
+                            <i class="bi bi-body-text"></i> Details
+                        </a>
+                        <a href="{% url 'book_update' book.id %}"
+                           class="btn btn-sm btn-outline-secondary my-auto rounded-4 px-3">
+                            <i class="bi bi-pencil"></i> Edit
+                        </a>
+                        <a type="button" class="btn btn-sm btn-outline-danger rounded-4 my-auto"
+                           data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ book.id }}">
+                            <i class="bi bi-trash"></i>
+                            Delete
+                        </a>
 
-                    <!-- Modal -->
-                    <div class="modal fade " id="deleteConfirm{{ book.id }}" tabindex="-1"
-                         aria-labelledby="deleteConfirm{{ book.id }}Label"
-                         aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="deleteConfirm{{ book.id }}Label">Delete
-                                        Confirmation</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure that you want to Delete this book?</p>
+                        <!-- Modal -->
+                        <div class="modal fade " id="deleteConfirm{{ book.id }}" tabindex="-1"
+                             aria-labelledby="deleteConfirm{{ book.id }}Label"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="deleteConfirm{{ book.id }}Label">Delete
+                                            Confirmation</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure that you want to Delete this book?</p>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <form method="post" action="{% url 'book_delete' pk=book.id %}">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                         </button>
-                                    </form>
+                                        <form method="post" action="{% url 'book_delete' pk=book.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
 
             </div>
@@ -80,6 +82,36 @@
 
     {% endfor %}
 
+    <nav class="col-12 d-flex justify-self-center" aria-label="...">
 
+        <ul class="pagination pagination-sm mx-auto">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for page in page_obj.paginator.page_range %}
+                <li class="page-item active" aria-current="page">
+                <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                </li>
+            {% endfor %}
+
+
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                       {% if page_obj.next_page_number %}href="?page={{ page_obj.next_page_number }}"{% endif %}
+                       aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
 
 {% endblock content %}
