@@ -22,22 +22,6 @@ class BookDetailView(generic.DetailView, generic.CreateView):
     context_object_name = 'book'
     form_class = NewCommentForm
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['form'] = NewCommentForm()
-    #     return context
-
-    # def post(self, request, *args, **kwargs):
-    #     # self.object = self.get_object()
-    #     form = NewCommentForm(request.POST)
-    #     if form.is_valid():
-    #         comment = form.save(commit=False)
-    #         comment.book = self.object
-    #         comment.user = request.user
-    #         comment.save()
-    #         return redirect('book_details', pk=self.object.pk)
-    #     return self.get(request, *args, **kwargs)
-
 class CommentCreateView(LoginRequiredMixin,generic.CreateView):
 
     def post(self, request, pk):

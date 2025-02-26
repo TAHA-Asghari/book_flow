@@ -5,7 +5,9 @@ from django.urls import reverse
 from django.utils.timezone import now
 
 
+
 class Book(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default='1')
     title = models.CharField(max_length=100, unique=True,  # Ensures no duplicate titles
                              error_messages={"unique": "A book with this title already exists."})
     author = models.CharField(max_length=100,
