@@ -59,6 +59,9 @@ class BookCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = 'books/add_book.html'
     success_url = reverse_lazy('book_list')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class BookUpdateView(LoginRequiredMixin,UserPassesTestMixin, generic.UpdateView):
