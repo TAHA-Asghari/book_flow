@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.defaulttags import comment
@@ -37,7 +38,7 @@ class BookDetailView(generic.DetailView, generic.CreateView):
     #         return redirect('book_details', pk=self.object.pk)
     #     return self.get(request, *args, **kwargs)
 
-class CommentCreateView(generic.CreateView):
+class CommentCreateView(LoginRequiredMixin,generic.CreateView):
 
     def post(self, request, pk):
         book = get_object_or_404(Book, pk=pk)
@@ -52,20 +53,20 @@ class CommentCreateView(generic.CreateView):
         return redirect('book_details', pk=book.pk)
 
 
-class BookCreateView(generic.CreateView):
+class BookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Comment
     form_class = NewBookForm
     template_name = 'books/add_book.html'
     success_url = reverse_lazy('book_list')
 
 
-class BookUpdateView(generic.UpdateView):
+class BookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Book
     form_class = NewBookForm
     template_name = 'books/add_book.html'
     success_url = reverse_lazy('book_list')
 
 
-class BookDeleteView(generic.edit.DeleteView):
+class BookDeleteView(LoginRequiredMixin, generic.edit.DeleteView):
     model = Book
     success_url = reverse_lazy('book_list')
