@@ -2,7 +2,6 @@
 {% load django_bootstrap5 %}
 
 
-
 {% block page_title %}
     {{ book.title }}
 {% endblock page_title %}
@@ -28,7 +27,6 @@
                         {% csrf_token %}
 
                         {% bootstrap_form form layout='floating'%}
-
 
                         <div class="col-auto p-2 d-flex">
                             <button type="submit" class="btn btn-primary rounded-4 mx-auto px-4">

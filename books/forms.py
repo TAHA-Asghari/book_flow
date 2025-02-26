@@ -10,4 +10,4 @@ class NewBookForm(forms.ModelForm):
 class NewCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ('text',)
