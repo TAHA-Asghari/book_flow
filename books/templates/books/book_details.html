@@ -67,6 +67,8 @@
                 <span>Share your Comment </span>
             </div>
             <div class="card-body">
+                {% if user.is_authenticated %}
+
                 <form method="post" action="{% url 'add_comment' book.pk %}">
                     {% csrf_token %}
                     {% bootstrap_form form layout='floating' %}
@@ -78,6 +80,14 @@
                         </div>
                     </div>
                 </form>
+                {% else %}
+                <p>You must login to be able to share your comment</p>
+                    <a class="text_decoration_none btn btn-success px-3" href="{% url 'login' %}">Login</a>
+                    <a class="text_decoration_none btn btn-primary" href="{% url 'signup' %}">Signup</a>
+
+
+                {% endif %}
+
             </div>
         </div>
     </div>
