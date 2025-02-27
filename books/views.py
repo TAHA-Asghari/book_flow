@@ -22,21 +22,6 @@ class BookDetailView(generic.DetailView, generic.CreateView):
     context_object_name = 'book'
     form_class = NewCommentForm
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['form'] = NewCommentForm()
-    #     return context
-
-    # def post(self, request, *args, **kwargs):
-    #     # self.object = self.get_object()
-    #     form = NewCommentForm(request.POST)
-    #     if form.is_valid():
-    #         comment = form.save(commit=False)
-    #         comment.book = self.object
-    #         comment.user = request.user
-    #         comment.save()
-    #         return redirect('book_details', pk=self.object.pk)
-    #     return self.get(request, *args, **kwargs)
 
 class CommentCreateView(LoginRequiredMixin,generic.CreateView):
 
@@ -64,7 +49,7 @@ class BookCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class BookUpdateView(LoginRequiredMixin,UserPassesTestMixin, generic.UpdateView):
+class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = Book
     form_class = NewBookForm
     template_name = 'books/add_book.html'
@@ -74,7 +59,7 @@ class BookUpdateView(LoginRequiredMixin,UserPassesTestMixin, generic.UpdateView)
         obj = self.get_object()
         return obj.user == self.request.user
 
-class BookDeleteView(LoginRequiredMixin,UserPassesTestMixin, generic.edit.DeleteView):
+class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.edit.DeleteView):
     model = Book
     success_url = reverse_lazy('book_list')
 
