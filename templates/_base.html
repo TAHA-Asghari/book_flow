@@ -23,7 +23,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-xl-8 my-1">
             <nav class="navbar navbar-expand-md bg-light w-100 rounded-4 border-2 border-secondary shadow sticky-top p-1 px-3">
-                <a class="navbar-brand" href="#"><i class="bi bi-book"></i> Book Store</a>
+                <a class="navbar-brand" href="#"><i class="bi bi-book"></i> Book Blog</a>
                 {% if user.is_authenticated %}
                     <div class="nav-item dropdown list-unstyled ms-auto">
                         <a class="navbar-brand" href="#" role="button" data-bs-toggle="dropdown"
@@ -68,7 +68,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <div class="navbar-nav mx-md-auto">
+                        <div class="navbar-nav ms-md-auto">
                             <a class="nav-link text-dark {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
                                href="{% url 'book_list' %}">Books list</a>
                             <a class="nav-link text-dark {% if request.resolver_match.url_name == 'new_post' %}active{% endif %}"
