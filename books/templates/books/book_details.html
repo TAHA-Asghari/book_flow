@@ -48,11 +48,11 @@
                                     <p>Are you sure that you want to Delete this book?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    <button type="button" class="btn btn-sm btn-secondary rounded-4 px-3" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i>Close
                                     </button>
                                     <form method="POST" action="{% url 'book_delete' book.id %}">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete
+                                        <button type="submit" class="btn btn-sm btn-danger rounded-4"><i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>
                                 </div>
@@ -80,7 +80,7 @@
                         <div class="row">
 
                             <div class="col-auto p-2 d-flex">
-                                <button type="submit" class="btn btn-outline-primary rounded-4 mx-auto px-4">submit
+                                <button type="submit" class="btn btn-sm btn-outline-primary rounded-4 mx-auto px-4">submit
                                     comment
                                 </button>
                             </div>
@@ -110,10 +110,10 @@
                 <div class="row">
                     {% for comment in book.comments.all %}
 
-                        <div class="col-12  my-2">
-                            <div class="card border rounded-4">
+                        <div class="col-12 my-2">
+                            <div class="card border rounded-4 rounded-start-top-0">
                                 <div class="card-header d-flex align-items-center">
-                                    <span class="fs-3">
+                                    <span class="fs-6">
                                         <i class="bi bi-person"></i>
                                         {{ comment.user|capfirst }}
                                     </span>

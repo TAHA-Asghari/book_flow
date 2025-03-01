@@ -63,11 +63,11 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        <button type="button" class="btn btn-sm  btn-secondary rounded-4 px-3" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i>Close
                                         </button>
                                         <form method="post" action="{% url 'book_delete' pk=book.id %}">
                                             {% csrf_token %}
-                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>
+                                            <button type="submit" class="btn btn-sm btn-danger rounded-4"><i class="bi bi-trash"></i>
                                                 Delete
                                             </button>
                                         </form>
