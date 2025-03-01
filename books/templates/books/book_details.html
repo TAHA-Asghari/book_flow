@@ -71,7 +71,7 @@
             <div class="card-header">
                 <span>Share your Comment </span>
             </div>
-            <div class="card-body">
+            <div class="card-body py-5">
                 {% if user.is_authenticated %}
 
                     <form method="post" action="{% url 'add_comment' book.pk %}">
@@ -79,7 +79,7 @@
                         {% bootstrap_form form layout='floating' %}
                         <div class="row">
 
-                            <div class="col-auto p-2 d-flex">
+                            <div class="col-12 d-flex my-3">
                                 <button type="submit" class="btn btn-sm btn-outline-primary rounded-4 mx-auto px-4">submit
                                     comment
                                 </button>
@@ -110,9 +110,9 @@
                 <div class="row">
                     {% for comment in book.comments.all %}
 
-                        <div class="col-12 my-2">
-                            <div class="card border rounded-4 rounded-start-top-0">
-                                <div class="card-header d-flex align-items-center">
+                        <div class="col-12 my-2 px-4">
+                            <div class="card border rounded-4 rounded-top-0 rounded-end border-1 my-2">
+                                <div class="card-header d-flex align-items-center bg-transparent">
                                     <span class="fs-6">
                                         <i class="bi bi-person"></i>
                                         {{ comment.user|capfirst }}
