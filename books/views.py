@@ -32,7 +32,7 @@ class CommentCreateView(LoginRequiredMixin,generic.CreateView):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.book = book #assign current Book
-            comment.user = request.user  # Assign the logged-in user
+            comment.user = request.user  # Assign the logged-in user3
             comment.save()
 
         return redirect('book_details', pk=book.pk)

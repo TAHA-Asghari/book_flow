@@ -70,9 +70,11 @@
                     <div class="offcanvas-body">
                         <div class="navbar-nav ms-md-auto">
                             <a class="nav-link text-dark {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
-                               href="{% url 'book_list' %}">Books list</a>
+                               href="{% url 'book_list' %}"><i class="bi bi-card-list"></i>
+                                Books list</a>
                             <a class="nav-link text-dark {% if request.resolver_match.url_name == 'new_post' %}active{% endif %}"
-                               href="{% url 'book_add' %}">Add New Book</a>
+                               href="{% url 'book_add' %}"><i class="bi bi-node-plus"></i>
+                                Add New Book</a>
 
                         </div>
                     </div>
