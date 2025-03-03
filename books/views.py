@@ -11,7 +11,7 @@ from .models import Book, Comment
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 2
+    paginate_by = 4
     template_name = 'books/books_list.html'
     context_object_name = 'books'
 
