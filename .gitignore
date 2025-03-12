@@ -75,3 +75,6 @@ celerybeat-schedule
 *.envrc
 *.cfg
 *.pid
+
+.env
+.env.*
